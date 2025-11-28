@@ -1,0 +1,745 @@
+/* ====== RESET CƠ BẢN ====== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Rajdhani', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+    background: radial-gradient(circle at top, #00444a33 0%, #00444A 75%, #00444A 10%);
+    color: #fff;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+/* Sao/particle nền (optional) */
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    background-image:
+        radial-gradient(circle, rgba(255,255,255,0.35) 1px, transparent 1px);
+    background-size: 120px 120px;
+    opacity: 0.18;
+    z-index: -1;
+}
+
+/* ====== HEADER CHÍNH ====== */
+.site-header {
+    width: 100%;
+    padding: 28px 0 22px;
+}
+
+/* Khối gradient chứa logo + stats */
+.header-inner {
+    width: 80%;
+    max-width: 1350px;
+    margin: 0 auto;
+    padding: 18px 40px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    background: radial-gradient(circle at top left,
+    #05e5cb 0%,      /* xanh ngọc sáng */
+    #06a3a1 0%,      /* xanh dương nhạt */
+    #065e66 44%,    /* tím xanh hiện đại */
+    #1a1d36 100%     /* tím đậm nền */
+);
+    box-shadow: 0 18px 40px rgba(0,0,0,0.55);
+}
+
+/* LOGO */
+.header-logo-box {
+    display: flex;
+    align-items: center;
+}
+
+.header-logo {
+    height: 60px;            /* chỉnh lại bằng logo thật */
+    object-fit: contain;
+}
+
+/* STATS BÊN PHẢI */
+.header-stats {
+    display: flex;
+    gap: 40px;
+}
+
+.stats-number {
+    text-align: right;
+}
+
+.stats-value {
+    display: block;
+    font-size: 26px;
+    font-weight: 700;
+    color: #35ff89;
+    text-shadow: 0 0 12px rgba(53,255,137,0.8);
+}
+
+.stats-label {
+    display: block;
+    font-size: 12px;
+    letter-spacing: 1.6px;
+    opacity: 0.9;
+}
+
+/* ====== 4 Ô MENU BÊN DƯỚI ====== */
+.header-menu {
+    width: 80%;
+    max-width: 1350px;
+    margin: 24px auto 0;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 22px;
+}
+
+.menu-card {
+    background: rgba(9, 13, 28, 0.92);
+    border-radius: 18px;
+    padding: 18px 22px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    border: 1px solid rgba(255,255,255,0.07);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.6);
+    backdrop-filter: blur(8px);
+    transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+}
+
+.menu-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 16px 32px rgba(0,255,204,0.35);
+    border-color: rgba(0,255,204,0.5);
+}
+
+.menu-icon {
+    font-size: 32px;
+}
+
+.menu-title {
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.menu-sub {
+    font-size: 13px;
+    color: #a7b4d6;
+}
+
+/* ====== RESPONSIVE ====== */
+@media (max-width: 992px) {
+    .header-inner,
+    .header-menu {
+        width: 92%;
+    }
+
+    .header-inner {
+        padding: 16px 22px;
+    }
+
+    .header-stats {
+        gap: 22px;
+    }
+}
+
+@media (max-width: 768px) {
+    .header-inner {
+        
+        align-items: flex-start;
+        gap: 14px;
+    }
+
+    .header-stats {
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    .header-menu {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 520px) {
+    .header-menu {
+        grid-template-columns: 1fr;
+    }
+}
+/* ========= OFFICIAL ENTRY ========= */
+
+.entry-section {
+    margin-top: 10px;
+    padding-bottom: 60px;
+}
+
+.entry-wrapper {
+    width: 80%;
+    max-width: 1350px;
+    margin: 0 auto;
+    padding: 26px 32px 32px;
+    border-radius: 24px;
+    background: radial-gradient(circle at top left, #14a589 0%, #7b5cff 32%, #1b223a 65%, #14192a 100%);
+    box-shadow: 0 20px 50px rgba(0,0,0,0.75);
+    position: relative;
+}
+
+/* Header title + nút refresh */
+.entry-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 22px;
+}
+
+.entry-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 26px;
+    font-weight: 700;
+    color: #37ffb3;
+    text-shadow: 0 0 10px rgba(55,255,179,0.8);
+}
+
+.entry-icon {
+    font-size: 26px;
+}
+
+.refresh-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 22px;
+    border-radius: 24px;
+    border: 1px solid rgba(0,255,180,0.7);
+    background: rgba(6, 32, 35, 0.8);
+    color: #4efad8;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    box-shadow: 0 0 10px rgba(0,255,180,0.45);
+    transition: background 0.18s ease, transform 0.18s ease, box-shadow 0.18s ease;
+}
+
+.refresh-btn:hover {
+    background: rgba(12, 60, 70, 0.95);
+    transform: translateY(-1px);
+    box-shadow: 0 0 16px rgba(0,255,200,0.65);
+}
+
+.refresh-icon {
+    font-size: 16px;
+}
+
+/* Grid layout card */
+.route-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 22px;
+}
+
+/* Card mỗi route */
+.route-card {
+    position: relative;
+}
+
+/* Lớp trong với đường viền trên màu gradient */
+.route-card-inner {
+    position: relative;
+    background: rgba(9, 15, 32, 0.92);
+    border-radius: 18px;
+    padding: 22px 24px 20px;
+    border: 1px solid rgba(255,255,255,0.05);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.7);
+    overflow: hidden;
+}
+
+
+/* ===== Hover sáng lên cho card ===== */
+.route-card-inner:hover {
+    box-shadow: 0 0 28px rgba(0, 255, 180, 0.45);
+    transform: translateY(-3px);
+    transition: 0.2s ease;
+}
+
+/* Giúp mượt mà */
+.route-card-inner {
+    transition: 0.2s ease;
+}
+
+
+/* viền trên gradient giống hình */
+.route-card-inner::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #35ffc2, #ff4ef9, #ffc857);
+}
+
+/* top line: domain + ms + status */
+.route-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 14px;
+}
+
+.route-domain {
+    font-size: 16px;
+    font-weight: 700;
+}
+
+/* Latency */
+.route-latency {
+    margin-top: 6px;
+    font-size: 13px;
+}
+
+.latency-value {
+    color: #39ff88;
+    font-weight: 600;
+    font-size: 15px;
+    margin-right: 4px;
+}
+
+.latency-unit {
+    color: #97a0c5;
+    font-size: 12px;
+}
+
+/* status pill */
+.route-status-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 10px;
+    border-radius: 999px;
+    background: rgba(16, 95, 51, 0.9);
+    font-size: 12px;
+    color: #bfffd9;
+}
+
+.status-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #25ff4a;
+    box-shadow: 0 0 8px rgba(37,255,74,0.9);
+}
+
+/* mô tả route */
+.route-desc {
+    text-align: right;
+    font-size: 14px;
+    color: #dde3ff;
+    margin-bottom: 18px;
+}
+
+/* button row */
+.route-actions {
+    display: flex;
+    gap: 14px;
+}
+
+/* dùng chung cho mọi btn */
+.btn {
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
+    font-weight: 600;
+    border-radius: 12px;
+    padding: 11px 18px;
+    font-size: 14px;
+    transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+}
+
+/* Enter */
+.btn-enter {
+    flex: 1;
+    background: #00ffcc;
+    color: #05101a;
+    box-shadow: 0 0 14px rgba(0,255,204,0.65);
+}
+
+.btn-enter:hover {
+    background: #03d6aa;
+    transform: translateY(-1px);
+    box-shadow: 0 0 18px rgba(0,255,204,0.85);
+}
+
+/* Speed Test */
+/* Card sáng khi đang test */
+.route-card-inner.testing {
+    box-shadow: 0 0 26px rgba(0, 255, 200, 0.65);
+}
+
+/* Nút Speed Test khi đang test */
+.btn-speed.testing {
+    position: relative;
+    background: #00ffc8;
+    color: #021018;
+    border-color: #9be7ff;
+    box-shadow: 0 0 20px rgba(0, 255, 200, 0.85);
+    transform: translateY(-1px);
+    animation: btnPulse 0.9s ease-in-out infinite;
+}
+
+/* Vòng sóng lan */
+.btn-speed.testing::after {
+    content: "";
+    position: absolute;
+    inset: -2px;
+    border-radius: inherit;
+    border: 1px solid rgba(255, 255, 255, 0.55);
+    opacity: 0.7;
+    pointer-events: none;
+    animation: ripple 1.1s ease-out infinite;
+}
+
+/* Số ms đang test – nhấp nháy + zoom nhẹ */
+.latency-testing {
+    animation: latencyBlink 0.3s linear infinite alternate;
+}
+
+/* ========== KEYFRAMES ========== */
+
+@keyframes btnPulse {
+    0%   { transform: translateY(-1px) scale(1); }
+    50%  { transform: translateY(-2px) scale(1.03); }
+    100% { transform: translateY(-1px) scale(1); }
+}
+
+@keyframes ripple {
+    0%   { transform: scale(1); opacity: 0.7; }
+    100% { transform: scale(1.15); opacity: 0; }
+}
+
+@keyframes latencyBlink {
+    from { opacity: 0.4; transform: scale(1); }
+    to   { opacity: 1;   transform: scale(1.07); }
+}
+
+.btn-speed:hover {
+    background: #cbe00a;
+    box-shadow: 0 0 12px rgba(108,181,255,0.65);
+}
+
+/* ========= RESPONSIVE ENTRY ========= */
+
+/* tablet: 2 cột */
+@media (max-width: 1024px) {
+    .entry-wrapper {
+        width: 92%;
+        padding: 22px 18px 26px;
+    }
+
+    .route-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+/* ========== FOOTER ========== */
+
+.site-footer {
+    margin-top: 40px;
+    padding-bottom: 40px;
+}
+
+/* Hộp announcement */
+.announcement {
+    width: 80%;
+    max-width: 1350px;
+    margin: 0 auto 40px;
+}
+
+.announcement-inner {
+    padding: 26px 34px 26px;
+    border-radius: 26px;
+    border: 1px solid rgba(255,165,0,0.7);
+    background: radial-gradient(circle at top right,
+                rgba(255,120,60,0.45) 0%,
+                rgba(30,40,80,0.95) 40%,
+                rgba(10,18,40,0.96) 100%);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.7);
+}
+
+.announcement-title-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 18px;
+}
+
+.announcement-icon {
+    font-size: 20px;
+}
+
+.announcement-title {
+    font-size: 22px;
+    font-weight: 700;
+    color: #ffb52c;
+}
+
+.announcement-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.announcement-list li {
+    font-size: 15px;
+    line-height: 1.7;
+    color: #e6eeff;
+}
+
+/* Đường kẻ + copy + links */
+.footer-bottom {
+    width: 80%;
+    max-width: 1350px;
+    margin: 0 auto;
+    padding-top: 22px;
+    border-top: 1px solid rgba(255,255,255,0.12);
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    font-size: 13px;
+    color: #d0daf5;
+}
+
+.footer-links {
+    display: flex;
+    gap: 32px;
+}
+
+.footer-links a {
+    color: #d0daf5;
+    text-decoration: none;
+    font-size: 13px;
+}
+
+.footer-links a:hover {
+    color: #ffffff;
+}
+
+/* ===== FOOTER RESPONSIVE ===== */
+
+@media (max-width: 1024px) {
+    .announcement,
+    .footer-bottom {
+        width: 92%;
+    }
+
+    .announcement-inner {
+        padding: 22px 22px 22px;
+    }
+}
+
+@media (max-width: 768px) {
+    .announcement-inner {
+        padding: 18px 18px 20px;
+        border-radius: 20px;
+    }
+
+    .announcement-title {
+        font-size: 19px;
+    }
+
+    .announcement-list li {
+        font-size: 14px;
+    }
+
+    .footer-bottom {
+        flex-direction: column;
+        align-items: flex-start;
+        padding-top: 18px;
+        gap: 10px;
+    }
+
+    .footer-links {
+        gap: 18px;
+        flex-wrap: wrap;
+    }
+}
+
+@media (max-width: 480px) {
+    .announcement,
+    .footer-bottom {
+        width: 95%;
+        max-width: 420px;
+        padding-left: 14px;
+        padding-right: 14px;
+    }
+
+    .announcement-inner {
+        padding: 16px 14px 18px;
+    }
+
+    .announcement-title {
+        font-size: 18px;
+    }
+
+    .announcement-list li {
+    }
+}
+
+
+/* mobile: 1 cột + title/nút xếp dọc */
+@media (max-width: 768px) {
+    /* Giữ cùng 1 dòng, chỉ thu nhỏ spacing */
+    .entry-header {
+        flex-direction: row;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .route-grid {
+        grid-template-columns: 1fr;   /* 1 cột card trên mobile */
+    }
+}
+/* ========= MOBILE 390px (iPhone 12 Pro) ========= */
+@media (max-width: 480px) {
+
+    /* Canh tổng thể giống khung giữa như hình */
+    .header-inner,
+    .header-menu,
+    .entry-wrapper {
+        width: 95%;
+        max-width: 420px;
+        margin-left: auto;
+        margin-right: auto;
+        padding-left: 14px;
+        padding-right: 14px;
+    }
+
+    .site-header {
+        padding-top: 16px;
+    }
+
+    /* HEADER TOP */
+    .header-inner {
+        border-radius: 18px;
+        padding: 14px 16px;
+    }
+
+    .header-logo {
+        height: 48px;
+    }
+
+    .header-stats {
+        gap: 16px;
+    }
+
+    .stats-value {
+        font-size: 20px;
+    }
+
+    .stats-label {
+        font-size: 10px;
+        letter-spacing: 1.4px;
+    }
+
+    /* 4 ô menu: 2 cột x 2 dòng trên mobile */
+    .header-menu {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+        margin-top: 16px;
+    }
+
+    .menu-card {
+        padding: 12px 10px;
+        border-radius: 14px;
+    }
+
+    .menu-icon {
+        font-size: 26px;
+    }
+
+    .menu-title {
+        font-size: 14px;
+    }
+
+    .menu-sub {
+        font-size: 11px;
+    }
+
+    /* OFFICIAL ENTRY BOX */
+    .entry-wrapper {
+        margin-top: 10px;
+        padding: 18px 16px 22px;
+        border-radius: 20px;
+    }
+
+    .entry-title {
+        font-size: 20px;
+    }
+
+    .entry-icon {
+        font-size: 22px;
+    }
+
+    .refresh-btn {
+        padding: 8px 16px;
+        font-size: 11px;
+        border-radius: 22px;
+    }
+
+    /* CARD ROUTE */
+ /* Card sáng khi đang test */
+.route-card-inner.testing {
+    box-shadow: 0 0 26px rgba(0, 255, 200, 0.65);
+}
+
+/* Nút Speed Test khi đang test */
+.btn-speed.testing {
+    position: relative;
+    background: #00ffc8;
+    color: #021018;
+    border-color: #9be7ff;
+    box-shadow: 0 0 20px rgba(0, 255, 200, 0.85);
+    transform: translateY(-1px);
+    animation: btnPulse 0.9s ease-in-out infinite;
+}
+
+/* Vòng sóng lan */
+.btn-speed.testing::after {
+    content: "";
+    position: absolute;
+    inset: -2px;
+    border-radius: inherit;
+    border: 1px solid rgba(255, 255, 255, 0.55);
+    opacity: 0.7;
+    pointer-events: none;
+    animation: ripple 1.1s ease-out infinite;
+}
+
+/* Số ms đang test – nhấp nháy + zoom nhẹ */
+.latency-testing {
+    animation: latencyBlink 0.3s linear infinite alternate;
+}
+
+
+/* ========== KEYFRAMES ========== */
+
+@keyframes btnPulse {
+    0%   { transform: translateY(-1px) scale(1); }
+    50%  { transform: translateY(-2px) scale(1.03); }
+    100% { transform: translateY(-1px) scale(1); }
+}
+
+@keyframes ripple {
+    0%   { transform: scale(1); opacity: 0.7; }
+    100% { transform: scale(1.15); opacity: 0; }
+}
+
+@keyframes latencyBlink {
+    from { opacity: 0.4; transform: scale(1); }
+    to   { opacity: 1;   transform: scale(1.07); }
+}
+}
